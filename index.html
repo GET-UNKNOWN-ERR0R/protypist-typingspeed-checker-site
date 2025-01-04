@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProTypist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            font-family: 'Roboto', sans-serif;
+            background: #1f2933;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            padding: 15px 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffdd59;
+            letter-spacing: 2px;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .navbar-links a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 900;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .navbar-links a:hover {
+            color: #ffdd59;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .navbar-links.active {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 70px;
+            left: 0;
+            /* background: linear-gradient(135deg, #2c5364, #0f2027); */
+            background: #1f2933;
+            width: 100%;
+            padding: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-links {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .cta-buttons button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-buttons .start-btn {
+            background: linear-gradient(135deg, #43cea2, #185a9d);
+            color: #fff;
+        }
+
+        .cta-buttons .start-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 255, 200, 0.6);
+        }
+
+        .cta-buttons .signup-btn {
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            color: #fff;
+        }
+
+        .cta-buttons .signup-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(255, 165, 0, 0.6);
+        }
+
+        .features,
+        .how-to-use {
+            padding: 20px 60px;
+            text-align: center;
+            background: #1f2933;
+            margin: 20px 0;
+            border-radius: 15px;
+        }
+
+        .features:hover,
+        .how-to-use:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .features h2,
+        .how-to-use h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .features p,
+        .how-to-use p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .footer {
+            background: #1f2933;
+            color: #fff;
+            padding: 40px 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .footer-section {
+            flex: 1;
+            padding: 20px;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+
+        .footer-heading {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .footer-text {
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #aaa;
+        }
+
+        .footer-links-list {
+            list-style: none;
+        }
+
+        .footer-links-list li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links-list li a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .footer-links-list li a:hover {
+            color: #fff;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icon {
+            font-size: 24px;
+            color: #aaa;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-icon:hover {
+            color: #fff;
+            transform: scale(1.2);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-section {
+                min-width: 100%;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .about-follow,
+            .quick-contact {
+                display: flex;
+                justify-content: space-between;
+                gap: 30px;
+                width: 100%;
+            }
+
+            .footer-about,
+            .footer-follow,
+            .footer-links,
+            .footer-contact {
+                flex: 1;
+                text-align: left;
+            }
+
+            .footer-about {
+                text-align: left;
+            }
+
+            .footer-follow {
+                text-align: left;
+            }
+
+            .footer-bottom {
+                font-size: 12px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-start;
+            }
+
+            .footer-section {
+                flex: 1;
+                text-align: left;
+                margin-bottom: 0;
+            }
+
+            .about-follow,
+            .quick-contact {
+                display: flex;
+                justify-content: space-between;
+                gap: 30px;
+                width: 100%;
+            }
+
+            .footer-about,
+            .footer-follow,
+            .footer-links,
+            .footer-contact {
+                flex: 1;
+                text-align: left;
+            }
+
+            .footer-bottom {
+                font-size: 14px;
+                margin-top: 20px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <div class="navbar-brand">ProTypist</div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="navbar-links">
+                <a href="#">Home</a>
+                <a href="#how-to-use">How to Use</a>
+                <a href="#features">Features</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Test Your Typing Speed with Precision</h1>
+            <p>Enhance your typing skills and challenge yourself to reach new heights.</p>
+            <div class="cta-buttons">
+                <a href="testpage.html"> <button class="start-btn">Start Test</button></a>
+                <a href=""> <button class="signup-btn">Sign Up</button></a>
+            </div>
+        </section>
+
+        <section id="how-to-use" class="how-to-use">
+            <h2>How to Use</h2>
+            <p>Select your preferred difficulty level, start typing the text displayed, and check your results
+                instantly!</p>
+        </section>
+
+        <section id="features" class="features">
+            <h2>Features</h2>
+            <p>Experience real-time feedback, accurate performance stats, and an engaging leaderboard system to compete
+                with friends!</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-section about-follow">
+                <div class="footer-about">
+                    <h3 class="footer-heading">About Us</h3>
+                    <p class="footer-text">ProTypist is a sleek and efficient typing speed tester platform, designed to
+                        help users measure and improve their typing accuracy and speed with engaging tests and real-time
+                        results.</p>
+                </div>
+                <div class="footer-follow">
+                    <h3 class="footer-heading">Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- New: Quick Links and Contact in the same row -->
+            <div class="footer-section quick-contact">
+                <div class="footer-links">
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links-list">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3 class="footer-heading">Contact</h3>
+                    <p class="footer-text">Email: info@ProTypist.com</p>
+                    <p class="footer-text">Phone: +91 234 567 890</p>
+                    <p class="footer-text">Address: xyz City,India</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 ProTypist. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+
+    <script>
+        function toggleMenu() {
+            const links = document.querySelector('.navbar-links');
+            links.classList.toggle('active');
+        }
+    </script>
+</body>
+
+</html>

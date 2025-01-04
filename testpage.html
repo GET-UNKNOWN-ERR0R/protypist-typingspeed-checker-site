@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Speed Tester</title>
+    <link rel="stylesheet" href="testpage.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="main-heading">Typing Speed Tester</h1>
+        <div class="right-section">
+            <div class="difficulty">
+                <div id="difficulty">
+                    <button id="easy-btn" class="difficulty-btn">Easy</button>
+                    <button id="medium-btn" class="difficulty-btn">Medium</button>
+                    <button id="hard-btn" class="difficulty-btn">Hard</button>
+                </div>
+            </div>
+            <div class="typing-area">
+                <div id="target-text">Your text to type will appear here...</div>
+                <textarea id="input-text" placeholder="Start typing here..." disabled></textarea>
+            </div>
+            <div class="stats">
+                <span id="timer">Time: 0:00</span>
+                <div id="progress-bar-container">
+                    <div id="progress-bar"></div>
+                </div>
+            </div>
+            <div class="controls">
+                <button id="start-btn">Start</button>
+                <button id="reset-btn">Reset</button>
+            </div>
+        </div>
+        <div class="left-section">
+            <div class="leaderboard">
+                <h2>Leaderboard</h2>
+                <ul id="leaderboard-list">
+
+                </ul>
+            </div>
+            <div class="results">
+                <h3 id="res" style="color: chartreuse;  margin-top: 10px; margin-bottom: 3px;">Your New Result:</h3>
+                <p id="wpm-result" style="color: yellow;">WPM: <span style="color: darkgrey;">0</span></p>
+                <p id="accuracy-result" style="color: yellow;">Accuracy: <span style="color: darkgrey;">0%</span></p>
+                <p id="errors-result" style="color: yellow;">Errors: <span style="color: darkgrey;">0</span></p>
+            </div>
+        </div>
+    </div>
+    <script src="mainscript.js">
+    </script>
+</body>
+
+</html>
