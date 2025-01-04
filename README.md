@@ -28,7 +28,7 @@ ProTypist is a sleek and efficient typing speed tester platform designed to help
 
 ## 💻 Demo
 
-Check out the live demo of the ProTypist platform: [ProTypist Demo](https://www.google.co.in/)
+Check out the live demo of the ProTypist platform: [ProTypist Demo](https://get-unknown-err0r.github.io/protypist-typingspeed-checker-site/)
 
 ---
 
